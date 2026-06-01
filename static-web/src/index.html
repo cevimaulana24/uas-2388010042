@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIMAFOR - Himpunan Mahasiswa Informatika</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif
+    }
+
+    :root {
+      --navy-950: #080f1f;
+      --navy-900: #0d1a35;
+      --navy-800: #112248;
+      --navy-700: #1a3260;
+      --navy-600: #224080;
+      --navy-500: #2e569e;
+      --navy-400: #4a74c4;
+      --navy-300: #7ca0d8;
+      --navy-200: #b4caec;
+      --navy-100: #dce8f7;
+      --navy-50: #eef4fb;
+      --accent: #5b9bd5;
+      --accent-light: #89bce8;
+      --accent-hover: #3a7fc0;
+      --surface: #f5f8fd;
+      --surface-card: #ffffff;
+      --text-dark: #0d1a35;
+      --text-muted: #4a6080;
+      --text-faint: #8aa4c0;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--surface);
+      color: var(--text-dark);
+      line-height: 1.7
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--navy-900);
+      padding: 14px 6%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid rgba(74, 116, 196, 0.18);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      display: block
+    }
+
+    .menu {
+      display: flex;
+      gap: 6px
+    }
+
+    .menu a {
+      color: var(--navy-300);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: all .2s;
+    }
+
+    .menu a:hover {
+      color: #fff;
+      background: rgba(74, 116, 196, 0.18)
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 6%;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(46, 86, 158, 0.25) 0%, transparent 70%),
+        linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 50%, var(--navy-800) 100%);
+      gap: 40px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(74, 116, 196, 0.12) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(46, 86, 158, 0.18) 0%, transparent 70%);
+      left: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .hero-byline {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--navy-300);
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(91, 155, 213, 0.1);
+      border: 1px solid rgba(91, 155, 213, 0.28);
+      color: var(--accent-light);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-badge::before {
+      content: '●';
+      font-size: 7px;
+      color: var(--accent)
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+      z-index: 1
+    }
+
+    .hero-text h1 {
+      font-size: 52px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(90deg, var(--accent-light), #a8d4f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-text p {
+      font-size: 17px;
+      color: var(--navy-200);
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.85;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: .3s;
+      border: 2px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      transform: translateY(-2px)
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 2px solid rgba(180, 202, 236, 0.3);
+      color: var(--navy-200);
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: .3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-light);
+      color: var(--accent-light)
+    }
+
+    .hero-img {
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 1
+    }
+
+    .hero-img img {
+      width: 380px;
+      max-width: 100%;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      filter: drop-shadow(0 0 40px rgba(91, 155, 213, 0.35));
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 44px;
+      flex-wrap: wrap
+    }
+
+    .stat {
+      border-left: 2px solid var(--accent);
+      padding-left: 16px
+    }
+
+    .stat-num {
+      font-size: 30px;
+      font-weight: 800;
+      color: #fff
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--navy-300);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase
+    }
+
+    /* ===== SECTIONS GENERAL ===== */
+    section {
+      padding: 90px 6%
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--navy-100);
+      color: var(--navy-700);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+      border: 1px solid var(--navy-200);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 56px
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy-900);
+      margin-bottom: 12px;
+      line-height: 1.2
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 17px
+    }
+
+    /* ===== ABOUT ===== */
+    #about {
+      background: var(--surface)
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center
+    }
+
+    .about-img-wrap {
+      position: relative
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(13, 26, 53, 0.12)
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: -22px;
+      right: -22px;
+      background: var(--navy-700);
+      color: #fff;
+      padding: 22px 26px;
+      border-radius: 16px;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(13, 26, 53, 0.28);
+    }
+
+    .about-img-badge span {
+      display: block;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--accent-light)
+    }
+
+    .about-text h3 {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--navy-900);
+      margin-bottom: 20px;
+      line-height: 1.3
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 16px;
+      line-height: 1.85
+    }
+
+    /* ===== PROGRAM ===== */
+    #program {
+      background: var(--surface-card)
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px
+    }
+
+    .card {
+      background: var(--surface-card);
+      border: 1.5px solid var(--navy-100);
+      padding: 32px;
+      border-radius: 20px;
+      transition: .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy-500), var(--accent));
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--navy-300);
+      box-shadow: 0 20px 50px rgba(13, 26, 53, 0.1);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--navy-50);
+      border: 1px solid var(--navy-100);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--navy-800);
+      margin-bottom: 12px
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.7
+    }
+
+    /* ===== VISI MISI ===== */
+    #visi {
+      background:
+        radial-gradient(ellipse 50% 60% at 20% 40%, rgba(46, 86, 158, 0.3) 0%, transparent 70%),
+        linear-gradient(160deg, var(--navy-900) 0%, var(--navy-950) 100%);
+    }
+
+    #visi .section-title h2 {
+      color: #fff
+    }
+
+    #visi .section-title p {
+      color: var(--navy-300)
+    }
+
+    #visi .section-tag {
+      background: rgba(91, 155, 213, 0.1);
+      color: var(--accent-light);
+      border: 1px solid rgba(91, 155, 213, 0.25);
+    }
+
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px
+    }
+
+    .vm-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(91, 155, 213, 0.18);
+      padding: 40px;
+      border-radius: 20px;
+    }
+
+    .vm-card h3 {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--accent-light);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .vm-card h3 .badge {
+      background: rgba(91, 155, 213, 0.14);
+      color: var(--accent-light);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      border: 1px solid rgba(91, 155, 213, 0.2);
+    }
+
+    .vm-card p {
+      color: var(--navy-200);
+      font-size: 16px;
+      line-height: 1.85
+    }
+
+    .vm-card ul {
+      color: var(--navy-200);
+      font-size: 15px;
+      list-style: none
+    }
+
+    .vm-card ul li {
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(91, 155, 213, 0.1);
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .vm-card ul li:last-child {
+      border-bottom: none
+    }
+
+    .vm-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    /* ===== GALLERY ===== */
+    #gallery {
+      background: var(--surface)
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 16px;
+      height: 220px;
+      object-fit: cover;
+      transition: .35s;
+      border: 1.5px solid var(--navy-100);
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.04);
+      border-color: var(--navy-400);
+      box-shadow: 0 16px 44px rgba(13, 26, 53, 0.15);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: var(--surface-card)
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px
+    }
+
+    .contact-card {
+      background: var(--navy-50);
+      border: 1.5px solid var(--navy-100);
+      padding: 36px 28px;
+      border-radius: 20px;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .contact-card:hover {
+      background: var(--navy-800);
+      border-color: var(--navy-700);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(13, 26, 53, 0.18);
+    }
+
+    .contact-card:hover h3 {
+      color: #fff
+    }
+
+    .contact-card:hover p {
+      color: var(--navy-300)
+    }
+
+    .contact-card-icon {
+      font-size: 34px;
+      margin-bottom: 16px
+    }
+
+    .contact-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy-800);
+      margin-bottom: 8px;
+      transition: .3s
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      transition: .3s
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy-950);
+      color: var(--navy-400);
+      text-align: center;
+      padding: 32px;
+      font-size: 14px;
+      border-top: 1px solid rgba(74, 116, 196, 0.15);
+    }
+
+    footer strong {
+      color: var(--accent-light)
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:768px) {
+      .hero-text h1 {
+        font-size: 36px
+      }
+
+      .section-title h2 {
+        font-size: 30px
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 14px
+      }
+
+      .menu {
+        flex-wrap: wrap;
+        justify-content: center
+      }
+
+      .hero {
+        text-align: center
+      }
+
+      .hero-stats {
+        justify-content: center
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      .about-img-badge {
+        right: 0;
+        bottom: -12px
+      }
+
+      .vm-grid {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="HIMAFOR.png" alt="HIMAFOR Logo">
+      </div>
+      <div class="menu">
+        <a href="#home">Beranda</a>
+        <a href="#about">Tentang</a>
+        <a href="#program">Program</a>
+        <a href="#visi">Visi &amp; Misi</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#contact">Kontak</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <div class="hero-byline">by Muhammad Cevi Maulana Ramadhan &nbsp;·&nbsp; 2388010042</div>
+      <div class="hero-badge">Himpunan Resmi Mahasiswa UINSSC</div>
+      <h1>Himpunan<br>Mahasiswa<br><span>Informatika</span></h1>
+      <p>Wadah pengembangan mahasiswa Informatika yang aktif, kreatif, inovatif, dan berorientasi pada teknologi masa
+        depan.</p>
+      <div class="btn-group">
+        <a href="#about" class="btn-primary">Pelajari Lebih Lanjut</a>
+        <a href="#contact" class="btn-outline">Hubungi Kami</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Anggota Aktif</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Program Kerja</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Tahun Berdiri</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="HIMAFOR.png" alt="Logo HIMAFOR">
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="section-title">
+      <div class="section-tag">Tentang Kami</div>
+      <h2>Mengenal HIMAFOR</h2>
+      <p>Lebih dekat dengan Himpunan Mahasiswa Informatika UINSSC</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="tentanghimafor.JPG" alt="Tentang HIMAFOR">
+        <div class="about-img-badge">
+          <span>2026</span>
+          Est.
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-tag">Organisasi Teknologi</div>
+        <h3>Organisasi Mahasiswa Berbasis Teknologi</h3>
+        <p>Himpunan Mahasiswa Informatika (HIMAFOR) merupakan organisasi mahasiswa yang bertujuan untuk mengembangkan
+          potensi mahasiswa dalam bidang akademik, teknologi, kepemimpinan, dan sosial.</p>
+        <p>HIMAFOR menjadi wadah bagi mahasiswa untuk berkolaborasi, berinovasi, dan membangun relasi melalui berbagai
+          program kerja dan kegiatan positif yang relevan dengan perkembangan industri teknologi.</p>
+        <a href="#program" class="btn-primary" style="margin-top:8px;display:inline-block">Lihat Program Kerja</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAM ===== -->
+  <section id="program">
+    <div class="section-title">
+      <div class="section-tag">Program Kerja</div>
+      <h2>Kegiatan Unggulan</h2>
+      <p>Berbagai program aktif yang dijalankan HIMAFOR</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🎤</div>
+        <h3>Seminar Teknologi</h3>
+        <p>Menghadirkan pembicara profesional di bidang IT dan teknologi digital untuk menambah wawasan mahasiswa.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <h3>Pelatihan Coding</h3>
+        <p>Workshop pemrograman web, mobile, AI, dan pengembangan aplikasi dari dasar hingga tingkat lanjut.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <h3>Kompetisi IT</h3>
+        <p>Mendorong mahasiswa untuk berprestasi melalui lomba teknologi, hackathon, dan inovasi digital.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3>Pengabdian Masyarakat</h3>
+        <p>Kegiatan sosial dan edukasi teknologi kepada masyarakat sekitar sebagai bentuk kontribusi nyata.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISI MISI ===== -->
+  <section id="visi">
+    <div class="section-title">
+      <div class="section-tag">Arah Organisasi</div>
+      <h2>Visi &amp; Misi</h2>
+      <p>Landasan dan tujuan HIMAFOR ke depan</p>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card">
+        <h3><span class="badge">VISI</span> Tujuan Kami</h3>
+        <p>Menjadikan HIMAFOR sebagai organisasi mahasiswa yang unggul, inovatif, dan berkontribusi aktif dalam
+          perkembangan teknologi informasi di level nasional maupun global.</p>
+      </div>
+      <div class="vm-card">
+        <h3><span class="badge">MISI</span> Langkah Kami</h3>
+        <ul>
+          <li>Meningkatkan kualitas akademik dan non-akademik mahasiswa</li>
+          <li>Membangun budaya kolaborasi dan kreativitas</li>
+          <li>Menyelenggarakan kegiatan berbasis teknologi</li>
+          <li>Menjalin relasi dengan berbagai pihak internal maupun eksternal</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section id="gallery">
+    <div class="section-title">
+      <div class="section-tag">Galeri</div>
+      <h2>Dokumentasi Kegiatan</h2>
+      <p>Momen-momen berharga bersama mahasiswa informatika</p>
+    </div>
+    <div class="gallery-grid">
+      <img src="dokumentasikegiatan1.JPG" alt="Kegiatan 1">
+      <img src="dokumentasikegiatan2.JPG" alt="Kegiatan 2">
+      <img src="dokumentasikegiatan3.JPG" alt="Kegiatan 3">
+      <img src="dokumentasikegiatan4.JPG" alt="Kegiatan 4">
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="section-title">
+      <div class="section-tag">Kontak</div>
+      <h2>Hubungi Kami</h2>
+      <p>Kami siap membantu untuk informasi lebih lanjut</p>
+    </div>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="contact-card-icon">📧</div>
+        <h3>Email</h3>
+        <p>himaforkampus@gmail.com</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📸</div>
+        <h3>Instagram</h3>
+        <p>@himafor_kampus</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📍</div>
+        <h3>Alamat</h3>
+        <p>Kampus Fakultas Teknik dan Informatika</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2026 <strong>Himpunan Mahasiswa Informatika</strong> — UIN Siber Syekh Nurjati Cirebon</p>
+    <p style="margin-top:6px;font-size:13px;color:#4a6080">Dibuat oleh Muhammad Cevi Maulana Ramadhan — 2388010042</p>
+  </footer>
+
+</body>
+
+</html>
