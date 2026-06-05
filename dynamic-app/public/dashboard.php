@@ -28,7 +28,7 @@ $tasks = $stmt->fetchAll();
 <body>
     <header class="topbar">
         <div>
-            <p class="eyebrow">UAS Administrasi Server | Cloud Computing II</p>
+            <p class="eyebrow">UAS Administrasi Server | 2388010042</p>
             <h1>Dashboard Admin</h1>
         </div>
         <nav class="nav-actions">
