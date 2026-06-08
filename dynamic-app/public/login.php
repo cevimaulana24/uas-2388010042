@@ -46,7 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="post" class="form">
             <label for="username">Username</label>
-            <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+            <input 
+    id="username" 
+    name="username"     
+    type="text" 
+    autocomplete="username" 
+    placeholder="Masukan Username"
+    required 
+    autofocus>
 
             <label for="password">Password</label>
             <input id="password" name="password" type="password" autocomplete="current-password" required>
