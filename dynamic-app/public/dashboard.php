@@ -52,7 +52,7 @@ $tasks = $stmt->fetchAll();
                     <h2>Data Tasks</h2>
                     <p>Data tersimpan di MariaDB dan dikelola dengan CRUD PHP native.</p>
                 </div>
-                <a href="create.php" class="button button-primary">Tambah Task</a>
+                <a href="create.php" class="button button-primary">Tambah</a>
             </div>
 
             <?php if (count($tasks) === 0): ?>
